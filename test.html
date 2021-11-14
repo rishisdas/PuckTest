@@ -81,13 +81,13 @@ if(rec_flag) {
 
 var x = new Date(); // current time
 
-Puck.accelOn(); // default is 12.5Hz, with gyro
+Puck.accelOn(1.6); // default is 12.5Hz, with gyro
 // or Puck.accelOn(1.6); for 1.6Hz low power, without gyro
 Puck.on('accel', function(a) {
   console.log(a);
 });
   
-var y = a();
+var y = accel();
 
 if ( x.getTime() >= date_win_max) {
 
