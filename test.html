@@ -87,7 +87,7 @@ Puck.on('accel', function(a) {
   console.log(a);
 });
   
-var y = accel();
+var y = Puck.accelOn(1.6);
 
 if ( x.getTime() >= date_win_max) {
 
