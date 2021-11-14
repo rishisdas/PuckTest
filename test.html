@@ -68,7 +68,7 @@ dateWindow: [date_win_min, date_win_max],
 
 // valueRange: [980, 1020],
 
-labels: ['Time', 'Pressure'],
+labels: ['Time', 'Accelaration'],
 
 showRangeSelector: true
 
@@ -81,7 +81,13 @@ if(rec_flag) {
 
 var x = new Date(); // current time
 
-var y = parseFloat(v);
+Puck.accelOn(); // default is 12.5Hz, with gyro
+// or Puck.accelOn(1.6); for 1.6Hz low power, without gyro
+Puck.on('accel', function(a) {
+  console.log(a);
+});
+  
+var y = a();
 
 if ( x.getTime() >= date_win_max) {
 
