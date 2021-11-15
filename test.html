@@ -30,8 +30,6 @@
 $(document).ready(function () {
 
 var data = [];
- 
-var magd = [];
 
 var rec_flag = false;
 
@@ -70,13 +68,11 @@ dateWindow: [date_win_min, date_win_max],
 
 // valueRange: [980, 1020],
 
-labels: ['Time', 'Accelaration'],
+labels: ['Time', 'Pressure'],
 
 showRangeSelector: true
 
 });
-
-
 
 
 function onLine(v) {
@@ -84,8 +80,8 @@ function onLine(v) {
 if(rec_flag) {
 
 var x = new Date(); // current time
-  
-var y = s;
+
+var y = parseFloat(v);
 
 if ( x.getTime() >= date_win_max) {
 
