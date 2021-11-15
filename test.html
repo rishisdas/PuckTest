@@ -30,6 +30,8 @@
 $(document).ready(function () {
 
 var data = [];
+ 
+var magd = [];
 
 var rec_flag = false;
 
@@ -74,20 +76,42 @@ showRangeSelector: true
 
 });
 
+var log = new Float32Array(100); // our logged data
+var logIndex = 0; // index of last logged data item
+var timePeriod = 60*1000; // every minute
+var lastReadingTime; // time of last reading
+
+// Store data into RAM
+function storeMyData(data) {
+  logIndex++;
+  if (logIndex>=log.length) logIndex=0;
+  log[logIndex] = data;
+}
+
+// Get Data and store it in RAM
+function getData() {
+  var data = Puck.mag();
+  storeMyData(data);
+  lastReadingTime = Date.now();
+}
+
+// Dump our data in a human-readable format
+function getData() {
+  for (var i=1;i<=log.length;i++) {
+    var time = new Date(lastReadingTime - (log.length-i)*timePeriod);
+    var data = log[(i+logIndex)%log.length];
+    console.log(time.toString()+"\t"+data);
+  }
+}
+
 
 function onLine(v) {
 
 if(rec_flag) {
 
 var x = new Date(); // current time
-
-Puck.accelOn(1.6); // default is 12.5Hz, with gyro
-// or Puck.accelOn(1.6); for 1.6Hz low power, without gyro
-Puck.on('accel', function(a) {
-  console.log(a);
-});
   
-var y = Puck.accelOn(1.6);
+var y = data;
 
 if ( x.getTime() >= date_win_max) {
 
