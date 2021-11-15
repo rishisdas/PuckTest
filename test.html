@@ -77,11 +77,16 @@ showRangeSelector: true
 });
 
 
+var zero = Puck.mag();
+function onMag(p) {
+  p.x -= zero.x;
+  p.y -= zero.y;
+  p.z -= zero.z;
+  var s = Math.sqrt(p.x*p.x + p.y*p.y + p.z*p.z);
+  }
+}
+Puck.on('mag', onMag);
 Puck.magOn();
-Puck.on('mag', function(xyz) {
-  console.log(xyz);
-});
-// Turn events off with Puck.magOff();
 
 function onLine(v) {
 
@@ -89,7 +94,7 @@ if(rec_flag) {
 
 var x = new Date(); // current time
   
-var y = mag;
+var y = s;
 
 if ( x.getTime() >= date_win_max) {
 
