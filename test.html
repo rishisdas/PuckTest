@@ -26,6 +26,19 @@
 <div id="div_g" style="width:1200px; height:600px;"></div>
 
 <script type="text/javascript">
+  
+  
+  var zero = Puck.mag();
+function onMag(p) {
+  p.x -= zero.x;
+  p.y -= zero.y;
+  p.z -= zero.z;
+  var s = Math.sqrt(p.x*p.x + p.y*p.y + p.z*p.z);
+  }
+}
+Puck.on('mag', onMag);
+Puck.magOn();
+  
 
 $(document).ready(function () {
 
@@ -74,19 +87,8 @@ showRangeSelector: true
 
 });
 
-  {
-var zero = Puck.mag();
-function onMag(p) {
-  p.x -= zero.x;
-  p.y -= zero.y;
-  p.z -= zero.z;
-  var s = Math.sqrt(p.x*p.x + p.y*p.y + p.z*p.z);
-  }
-}
-  }
-Puck.on('mag', onMag);
-Puck.magOn();
-  
+
+
 
 function onLine(v) {
 
