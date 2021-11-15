@@ -74,6 +74,7 @@ showRangeSelector: true
 
 });
 
+  {
 var zero = Puck.mag();
 var doorOpen = false;
 function onMag(p) {
@@ -87,6 +88,7 @@ function onMag(p) {
     digitalPulse(open ? LED1 : LED2, 1,1000);
   }
 }
+  }
 Puck.on('mag', onMag);
 Puck.magOn();
   
