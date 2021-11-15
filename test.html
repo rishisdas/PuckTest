@@ -90,7 +90,7 @@ function storeMyData(data) {
 
 // Get Data and store it in RAM
 function getData() {
-  var data = Puck.mag();
+  var data = Puck.magOn();
   storeMyData(data);
   lastReadingTime = Date.now();
 }
