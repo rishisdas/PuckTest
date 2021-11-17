@@ -26,8 +26,7 @@
 <div id="div_g" style="width:1200px; height:600px;"></div>
 
 <script type="text/javascript">
-  
-  
+
 $(document).ready(function () {
 
 var data = [];
@@ -76,15 +75,13 @@ showRangeSelector: true
 });
 
 
-
-
 function onLine(v) {
 
 if(rec_flag) {
 
 var x = new Date(); // current time
 
-var y = s;
+var y = parseFloat(v);
 
 if ( x.getTime() >= date_win_max) {
 
